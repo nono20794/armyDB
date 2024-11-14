@@ -40,8 +40,9 @@ font-size: 12px;}
 
 #commander-name,
 #commander-name-olive,
-#notesInput{
-    font-size: 12px;
+#notesInput,
+#notesInputOlive{
+    font-size: 13px;
 }
 
 .inc-btn,
