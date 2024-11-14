@@ -16,3 +16,23 @@ function displayCurrentDate() {
     firestore.collection("412A").doc(stringWithDots).set({});
     return formattedDate;
 }
+
+let counters = [0, 0, 0, 0, 0];
+
+function updateCounterFromInput(counterNumber) {
+    const inputValue = parseInt(document.getElementById(`counter${counterNumber}`).value, 10);
+    counters[counterNumber - 1] = isNaN(inputValue) ? 0 : inputValue;
+}
+
+function increment(counterNumber) {
+    counters[counterNumber - 1] += 1;
+    document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
+}
+
+function decrement(counterNumber) {
+    if (counters[counterNumber - 1] > 0) {
+        counters[counterNumber - 1] -= 1;
+        document.getElementById(`counter${counterNumber}`).value = counters[counterNumber - 1];
+    }
+
+}
