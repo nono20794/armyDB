@@ -16,25 +16,21 @@ function displayCurrentDate() {
 
 // Define shift times as an array of start and end times
 const shifts = [
-    { shiftNumber: 1, startHour: 8, startMinute: 0, endHour: 8, endMinute: 30 },   // Shift 1: 8:00 - 8:30 AM
-    { shiftNumber: 2, startHour: 12, startMinute: 0, endHour: 12, endMinute: 30 }, // Shift 2: 12:00 - 12:30 PM
-    { shiftNumber: 3, startHour: 16, startMinute: 0, endHour: 16, endMinute: 30 }  // Shift 3: 16:00 - 16:30
+    { shiftNumber: 1, startHour: 8, endHour: 9 },   // Shift 1: 8:00 - 8:30 AM
+    { shiftNumber: 2, startHour: 12, endHour: 13 }, // Shift 2: 12:00 - 12:30 PM
+    { shiftNumber: 3, startHour: 16, endHour: 17 }  // Shift 3: 16:00 - 16:30
 ];
 
 // Function to check if the current time is within any shift time and return shift number
 function getCurrentShift() {
     const now = new Date();
     const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
 
     // Loop through each shift to check if the current time falls within any shift time
     for (const shift of shifts) {
-        const { shiftNumber, startHour, startMinute, endHour, endMinute } = shift;
+        const { shiftNumber, startHour, endHour } = shift;
 
-        if (
-            (currentHour > startHour || (currentHour === startHour && currentMinute >= startMinute)) &&
-            (currentHour < endHour || (currentHour === endHour && currentMinute < endMinute))
-        ) {
+        if ((currentHour>=startHour) && (currentHour<endHour)) {
             return shiftNumber;  // Return the shift number if within shift time
         }
     }
@@ -91,20 +87,57 @@ function getData(){
 
 function copyData()
 {
-    getData();
-    saveData();
-    navigator.clipboard.writeText(shiftData).then(() => {
-        alert("הועתק");
-    }).catch(err => {
-        alert("Failed to copy data: " + err);
-    });
+    if(getCurrentShift()!=null){
+        getData();
+        saveData();
+        navigator.clipboard.writeText(shiftData).then(() => {
+            alert("הועתק");
+        }).catch(err => {
+            alert("Failed to copy data: " + err);
+        });
+    }
+    else{
+        if (confirm("אינך נמצא בזמן משמרת, האם בכל זאת תרצה לבצע שינויים?")) {
+            // User clicked 'OK', proceed with the action
+            console.log("ok ok ok ");
+            getData();
+            saveData();
+            navigator.clipboard.writeText(shiftData).then(() => {
+                alert("הועתק");
+            }).catch(err => {
+                alert("Failed to copy data: " + err);
+            });
+        } else {
+            // User clicked 'Cancel', do nothing or show a message
+            console.log("Action canceled by the user.");
+        }
+    }
+    
 }
 
 function sendWhatsApp(){
-    getData();
-    const phoneNumber = "9725000000";
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
-    window.open(whatsappURL, "_blank");
+    if(getCurrentShift()!=null){
+        getData();
+        saveData();
+        const phoneNumber = "9725000000";
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
+        window.open(whatsappURL, "_blank");
+    }
+    else{
+        if (confirm("אינך נמצא בזמן משמרת, האם בכל זאת תרצה לבצע שינויים?")) {
+            // User clicked 'OK', proceed with the action
+            console.log("ok ok ok ");
+            getData();
+            saveData();
+            const phoneNumber = "9725000000";
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
+            window.open(whatsappURL, "_blank");
+        } else {
+            // User clicked 'Cancel', do nothing or show a message
+            console.log("Action canceled by the user.");
+        }
+    }
+    
 }
 
 function goHome() {
@@ -113,13 +146,19 @@ function goHome() {
 
 function saveData(){
     const data={
+        date: dateWithDots,
         commanderName: commanderName,
         openGateHour: openHour,
-        closeGatehour: closeHour
+        closeGatehour: closeHour,
+        peopleEnter: counters[0],
+        peopleExit: counters[1],
+        vehicleEnter : counters[2],
+        vehicleExit: counters[3],
+        peopleRefused: counters[4],
     }
     const db = firebase.firestore();
         db.collection("412A").doc(dateWithDots) // Replace with your document structure as needed
-            .collection("pillbox").doc(`shift1`)
+            .collection("pillbox").doc(openHour)
             .set(data, { merge: true })
             .then(() => console.log(`Data saved successfully during shift1`))
             .catch(error => console.error("Error saving data:", error));
