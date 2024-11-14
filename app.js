@@ -1,4 +1,3 @@
-
 const currentDate = displayCurrentDate();
 const dateWithDots = currentDate.replace(/\//g, ".");
 //display date and create an entry in the db for this day 
@@ -129,7 +128,7 @@ function sendWhatsApp(){
             console.log("ok ok ok ");
             getData();
             saveData();
-            const phoneNumber = "972543149995";
+            const phoneNumber = "9725000000";
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
             window.open(whatsappURL, "_blank");
         } else {
