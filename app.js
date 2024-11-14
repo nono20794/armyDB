@@ -13,6 +13,8 @@ function displayCurrentDate() {
     return formattedDate;
 }
 
+///////////// pillbox///////// 
+
 // Define shift times as an array of start and end times
 const shifts = [
     { shiftNumber: 1, startHour: 8, endHour: 9 },   // Shift 1: 8:00 - 8:30 AM
@@ -162,4 +164,71 @@ function saveData(){
             .then(() => console.log(`Data saved successfully during shift1`))
             .catch(error => console.error("Error saving data:", error));
     
+}
+
+///////// olive picking ///////////////////////////////////////
+
+let oliveCounters = [0, 0, 0, 0, 0, 0, 0, 0];
+
+function updateCounterFromInputOlive(counterNumber) {
+    const inputValue = parseInt(document.getElementById(`oliveCounter${counterNumber}`).value, 10);
+    if (inputValue < 0) {
+        inputValue = 0;  // Reset to 0 if the value is negative
+        document.getElementById(`oliveCounter${counterNumber}`).value = 0;  // Update the input field
+        oliveCounters[counterNumber - 1] = 0;
+    }
+    oliveCounters[counterNumber - 1] = isNaN(inputValue) ? 0 : inputValue;
+}
+
+function incrementOlive(counterNumber) {
+    oliveCounters[counterNumber - 1] += 1;
+    document.getElementById(`oliveCounter${counterNumber}`).value = oliveCounters[counterNumber - 1];
+}
+
+function decrementOlive(counterNumber) {
+    if (oliveCounters[counterNumber - 1] > 0) {
+        oliveCounters[counterNumber - 1] -= 1;
+        document.getElementById(`oliveCounter${counterNumber}`).value = oliveCounters[counterNumber - 1];
+    }
+}
+
+let titleText;
+let entryExitText;
+let oliveCommanderName;
+let oliveNotes;
+let oliveDate;
+let oliveData;
+
+function getOliveData(){
+    for (let i = 1; i <= 8; i++) {
+        updateCounterFromInputOlive(i);
+    }
+    titleText = `**שער ${document.getElementById("title-select").value}**`;
+    entryExitText = `**${document.getElementById("entry-exit-select").value}**`;
+    oliveCommanderName = document.getElementById("commander-input").value || "לא צויין";
+    oliveNotes = document.getElementById("notes-input").value || "אין הערות";
+    oliveDate = `תאריך: ${currentDate}`;
+    oliveData = `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
+               `מעבר רגלי: ${counters[1]}\n` +
+               `מסורבים (רגלי): ${counters[0]}\n` +
+               `חמורים: ${counters[3]}\n` +
+               `מסורבים (חמורים): ${counters[2]}\n` +
+               `טרקטורים: ${counters[5]}\n` +
+               `מסורבים (טרקטורים): ${counters[4]}\n` +
+               `הערות: ${notes}`;
+}
+
+function copyOliveData(){
+    getOliveData();
+    navigator.clipboard.writeText(oliveData).then(() => {
+        alert("הועתק");
+    }).catch(err => {
+        alert("Failed to copy data: " + err);
+    });
+}
+function sendOliveData(){
+    getOliveData();
+    const phoneNumber = "972543149995";
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(oliveData)}`;
+    window.open(whatsappURL, "_blank");
 }
