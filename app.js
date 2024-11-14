@@ -119,7 +119,7 @@ function sendWhatsApp(){
     if(getCurrentShift()!=null){
         getData();
         saveData();
-        const phoneNumber = "9725000000";
+        const phoneNumber = "972543149995";
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
         window.open(whatsappURL, "_blank");
     }
