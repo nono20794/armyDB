@@ -92,6 +92,7 @@ function getData(){
 function copyData()
 {
     getData();
+    saveData();
     navigator.clipboard.writeText(shiftData).then(() => {
         alert("הועתק");
     }).catch(err => {
@@ -108,4 +109,19 @@ function sendWhatsApp(){
 
 function goHome() {
     window.location.href = 'index.html';
+}
+
+function saveData(){
+    const data={
+        commanderName: commanderName,
+        openGateHour: openHour,
+        closeGatehour: closeHour
+    }
+    const db = firebase.firestore();
+        db.collection("412A").doc(dateWithDots) // Replace with your document structure as needed
+            .collection("pillbox").doc(`shift1`)
+            .set(data, { merge: true })
+            .then(() => console.log(`Data saved successfully during shift1`))
+            .catch(error => console.error("Error saving data:", error));
+    
 }
