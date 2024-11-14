@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2 class="my-4" id="title">חסם באקה 427</h1>
-    <div class="py-0 text-end d-flex flex-column justify-content-center">
+    <h2 class="my-2" id="title">חסם באקה 427</h1>
+    <div class="py-0 text-end d-flex flex-column justify-content-center ">
         <p class="my-2" id="date"></p>
         <!-- <p class="my-2">:שם מפקד</p> -->
-        <div class="commander-section my-2 d-flex align-items-center" dir="rtl">
+        <div class="commander-section my-1 d-flex align-items-center" dir="rtl">
             <label for="commander-name" class="form-label text-nowrap ms-4">שם מפקד:</label>
             <input type="text" class="form-control form-control-sm" id="commander-name" placeholder="הכנס שם" >
         </div>
-        <p class="my-2 d-flex align-items-center text-nowrap">
+        <p class="my-1 d-flex align-items-center text-nowrap">
             <select class="form-select form-select-sm me-4 flex-grow-1" aria-label="open gate" id="open-gate">
                 <option selected value="8:00">08:00</option>
                 <option value="12:00">12:00</option>
@@ -28,7 +28,7 @@
               </select>
             :פתיחת שער           
         </p>
-        <p class="my-2 d-flex align-items-center text-nowrap">
+        <p class="my-1 d-flex align-items-center text-nowrap">
             <select class="form-select form-select-sm me-4 flex-grow-1" aria-label="close gate" id="close-gate">
                 <option selected value="8:30">08:30</option>
                 <option value="12:30">12:30</option>
@@ -38,60 +38,60 @@
         </p>
     </div>
 
-    <div class="container mt-3">
-        <div class="row my-3 justify-content-evenly">
-            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-4" >
-                <p>מספר נכנסים</p>
-                <input type="number" id="counter1" class="counter-input mb-3 text-center" value="0" min="0" onchange="updateCounterFromInput(1)" >
+    <div class="container">
+        <div class="row mt-1 justify-content-evenly">
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-2" >
+                <p class="mb-1">מספר נכנסים</p>
+                <input type="number" id="counter1" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(1)" >
                 <div class="buttons-container d-flex flex-row">
-                    <button type="button" class="btn btn-outline-info inc-btn mx-2" onclick="increment(1)"><i class="bi bi-plus-lg"></i></button>
-                    <button type="button" class="btn btn-outline-info dec-btn mx-2" onclick="decrement(1)"><i class="bi bi-dash-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="increment(1)"><i class="bi bi-plus"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(1)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-4" >
-                <p>מספר יוצאים</p>
-                <input type="number" id="counter2" class="counter-input mb-3 text-center" value="0" min="0" onchange="updateCounterFromInput(2)">
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-2" >
+                <p class="mb-1">מספר יוצאים</p>
+                <input type="number" id="counter2" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(2)">
                 <div class="buttons-container d-flex flex-row">
-                    <button type="button" class="btn btn-outline-info inc-btn mx-2" onclick="increment(2)"><i class="bi bi-plus-lg"></i></button>
-                    <button type="button" class="btn btn-outline-info dec-btn mx-2" onclick="decrement(2)"><i class="bi bi-dash-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="increment(2)"><i class="bi bi-plus"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(2)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-4" >
-                <p>מספר מסורבים</p>
-                <input type="number" id="counter5" class="counter-input mb-3 text-center" value="0" min="0" onchange="updateCounterFromInput(5)">
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-2" >
+                <p class="mb-1">מספר מסורבים</p>
+                <input type="number" id="counter5" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(5)">
                 <div class="buttons-container d-flex flex-row">
-                    <button type="button" class="btn btn-outline-info inc-btn mx-2" onclick="increment(5)"><i class="bi bi-plus-lg"></i></button>
-                    <button type="button" class="btn btn-outline-info dec-btn mx-2" onclick="decrement(5)"><i class="bi bi-dash-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="increment(5)"><i class="bi bi-plus"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(5)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
         </div>
-        <div class="row mb-5 mt-3 justify-content-evenly">
-            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-4" >
-                <p>רכבים נכנסים</p>
-                <input type="number" id="counter3" class="counter-input mb-3 text-center" value="0" min="0" onchange="updateCounterFromInput(3)">
+        <div class="row mb-1 justify-content-evenly">
+            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-2" >
+                <p class="mb-1">רכבים נכנסים</p>
+                <input type="number" id="counter3" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(3)">
                 <div class="buttons-container d-flex flex-row">
-                    <button type="button" class="btn btn-outline-info inc-btn mx-2" onclick="increment(3)"><i class="bi bi-plus-lg"></i></button>
-                    <button type="button" class="btn btn-outline-info dec-btn mx-2" onclick="decrement(3)"><i class="bi bi-dash-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="increment(3)"><i class="bi bi-plus"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(3)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-4" >
-                <p>רכבים יוצאים</p>
-                <input type="number" id="counter4" class="counter-input mb-3 text-center" value="0" min="0" onchange="updateCounterFromInput(4)">
+            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-2" >
+                <p class="mb-1">רכבים יוצאים</p>
+                <input type="number" id="counter4" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(4)">
                 <div class="buttons-container d-flex flex-row">
-                    <button type="button" class="btn btn-outline-info inc-btn mx-2" onclick="increment(4)"><i class="bi bi-plus-lg"></i></button>
-                    <button type="button" class="btn btn-outline-info dec-btn mx-2" onclick="decrement(4)"><i class="bi bi-dash-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm inc-btn mx-2" onclick="increment(4)"><i class="bi bi-plus"></i></button>
+                    <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(4)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div class="notes  mx-auto my-2 d-flex align-items-center" dir="rtl">
+    <div class="notes  mx-auto my-1 d-flex align-items-center" dir="rtl">
         <label for="inputEmail4" class="form-label text-nowrap ms-4">הערות:</label>
-        <textarea class="form-control p-0 m-0" id="notesInput" rows="3"  style="width: 100%;" placeholder="הכנס הערות"></textarea>
+        <textarea class="form-control p-0 m-0" id="notesInput" rows="2"  style="width: 100%;" placeholder="הכנס הערות"></textarea>
     </div>
 
-    <div class="container my-4 d-flex justify-content-center p-3">
+    <div class="container my-1 d-flex justify-content-center p-3">
         <button type="button" class="btn btn-outline-primary inc-btn mx-2 control-button" onclick="copyData()">העתק</button>
         <button type="button" class="btn btn-outline-primary inc-btn mx-2 control-button" onclick="sendWhatsApp()">ווצאפ דורין</button>
         <button type="button" class="btn btn-outline-primary inc-btn mx-2 control-button" onclick="goHome()">חזור</button>

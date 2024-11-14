@@ -102,8 +102,8 @@ function copyData()
 function sendWhatsApp(){
     getData();
     const phoneNumber = "9725000000";
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappURL, "_blank");
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(shiftData)}`;
+    window.open(whatsappURL, "_blank");
 }
 
 function goHome() {
