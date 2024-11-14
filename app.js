@@ -203,23 +203,27 @@ function getOliveData(){
     for (let i = 1; i <= 8; i++) {
         updateCounterFromInputOlive(i);
     }
-    titleText = `**שער ${document.getElementById("title-select").value}**`;
-    entryExitText = `**${document.getElementById("entry-exit-select").value}**`;
-    oliveCommanderName = document.getElementById("commander-input").value || "לא צויין";
-    oliveNotes = document.getElementById("notes-input").value || "אין הערות";
+    titleText = `**${document.getElementById("gate-name").value}**`;
+    entryExitText = `**${document.getElementById("enter-exit").value}**`;
+    oliveCommanderName = document.getElementById("commander-name-olive").value || "לא צויין";
+    oliveNotes = document.getElementById("notesInputOlive").value || "אין הערות";
     oliveDate = `תאריך: ${currentDate}`;
-    oliveData = `${titleText}\n${entryExitText}\n${date}\nשם המפקד: ${commanderName}\n` +
-               `מעבר רגלי: ${counters[1]}\n` +
-               `מסורבים (רגלי): ${counters[0]}\n` +
-               `חמורים: ${counters[3]}\n` +
-               `מסורבים (חמורים): ${counters[2]}\n` +
-               `טרקטורים: ${counters[5]}\n` +
-               `מסורבים (טרקטורים): ${counters[4]}\n` +
-               `הערות: ${notes}`;
+    oliveData = `${titleText}\n${entryExitText}\n${oliveDate}\nשם המפקד: ${oliveCommanderName}\n` +
+               `מבוגרים: ${oliveCounters[1]}\n` +
+               `מסורבים (מבוגרים): ${oliveCounters[0]}\n` +
+               `ילדים: ${oliveCounters[3]}\n` +
+               `מסורבים (ילדים): ${oliveCounters[2]}\n` +
+               `חמורים: ${oliveCounters[5]}\n` +
+               `מסורבים (חמורים): ${oliveCounters[4]}\n` +
+               `טרקטורים: ${oliveCounters[7]}\n` +
+               `מסורבים (טרקטורים): ${oliveCounters[6]}\n` +
+               `הערות: ${oliveNotes}`;
 }
 
 function copyOliveData(){
     getOliveData();
+    saveOliveData();
+    console.log(oliveData);
     navigator.clipboard.writeText(oliveData).then(() => {
         alert("הועתק");
     }).catch(err => {
@@ -228,7 +232,34 @@ function copyOliveData(){
 }
 function sendOliveData(){
     getOliveData();
-    const phoneNumber = "972543149995";
+    saveOliveData();
+    const phoneNumber = "972522121836";
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(oliveData)}`;
     window.open(whatsappURL, "_blank");
+}
+
+function saveOliveData(){
+    const GateName = document.getElementById("gate-name").value;
+    const EnterExit = document.getElementById("enter-exit").value;
+    const data={
+        date: dateWithDots,
+        commanderName: oliveCommanderName,
+        gateName: GateName,
+        entryExitGate: EnterExit,
+        adults: oliveCounters[1],
+        adultsRefuse : oliveCounters[0],
+        children: oliveCounters[3],
+        childrenRefuse : oliveCounters[2],
+        donkeys: oliveCounters[5],
+        donkeysRefuse : oliveCounters[4],
+        trucks: oliveCounters[7],
+        trucksRefuse: oliveCounters[6]
+    }
+    const db = firebase.firestore();
+        db.collection("412A").doc(dateWithDots) // Replace with your document structure as needed
+            .collection(GateName).doc(EnterExit)
+            .set(data, { merge: true })
+            .then(() => console.log(`Data saved successfully during shift1`))
+            .catch(error => console.error("Error saving data:", error));
+    
 }
