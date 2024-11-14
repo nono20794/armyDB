@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חסם באקה 427</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="my-4">חסם באקה 427</h1>
+    <div class="py-0 text-end d-flex flex-column justify-content-center">
+        <p class="my-2" id="date"></p>
+        <!-- <p class="my-2">:שם מפקד</p> -->
+        <div class="commander-section my-2 d-flex align-items-center" dir="rtl">
+            <label for="commander-name" class="form-label text-nowrap ms-4">שם מפקד:</label>
+            <input type="text" class="form-control form-control-sm" id="commander-name">
+        </div>
+        <p class="my-2 d-flex align-items-center text-nowrap">
+            <select class="form-select form-select-sm me-4 flex-grow-1" aria-label="open gate" id="open-gate">
+                <option selected value="8">08:00</option>
+                <option value="12">12:00</option>
+                <option value="16">16:00</option>
+              </select>
+            :פתיחת שער           
+        </p>
+        <p class="my-2 d-flex align-items-center text-nowrap">
+            <select class="form-select form-select-sm me-4 flex-grow-1" aria-label="close gate" id="close-gate">
+                <option selected value="8">08:30</option>
+                <option value="12">12:30</option>
+                <option value="16">16:30</option>
+              </select>
+            :סגירת שער           
+        </p>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row my-3 justify-content-evenly">
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-4" >
+                <p>מספר נכנסים</p>
+                <input type="number" id="counter1" class="counter-input mb-3 text-center" value="0">
+                <div class="buttons-container d-flex flex-row">
+                    <button type="button" class="btn btn-outline-info inc-btn mx-2"><i class="bi bi-plus-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info dec-btn mx-2"><i class="bi bi-dash-lg"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-4" >
+                <p>מספר יוצאים</p>
+                <input type="number" id="counter1" class="counter-input mb-3 text-center" value="0">
+                <div class="buttons-container d-flex flex-row">
+                    <button type="button" class="btn btn-outline-info inc-btn mx-2"><i class="bi bi-plus-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info dec-btn mx-2"><i class="bi bi-dash-lg"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-4" >
+                <p>מספר מסורבים</p>
+                <input type="number" id="counter1" class="counter-input mb-3 text-center" value="0">
+                <div class="buttons-container d-flex flex-row">
+                    <button type="button" class="btn btn-outline-info inc-btn mx-2"><i class="bi bi-plus-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info dec-btn mx-2"><i class="bi bi-dash-lg"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5 justify-content-evenly">
+            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-4" >
+                <p>רכבים נכנסים</p>
+                <input type="number" id="counter1" class="counter-input mb-3 text-center" value="0">
+                <div class="buttons-container d-flex flex-row">
+                    <button type="button" class="btn btn-outline-info inc-btn mx-2"><i class="bi bi-plus-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info dec-btn mx-2"><i class="bi bi-dash-lg"></i></button>
+                </div>
+            </div>
+            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-4" >
+                <p>רכבים יוצאים</p>
+                <input type="number" id="counter1" class="counter-input mb-3 text-center" value="0">
+                <div class="buttons-container d-flex flex-row">
+                    <button type="button" class="btn btn-outline-info inc-btn mx-2"><i class="bi bi-plus-lg"></i></button>
+                    <button type="button" class="btn btn-outline-info dec-btn mx-2"><i class="bi bi-dash-lg"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="notes  mx-auto my-2 d-flex align-items-center" dir="rtl">
+        <label for="inputEmail4" class="form-label text-nowrap ms-4">הערות:</label>
+        <textarea class="form-control p-0 m-0" id="exampleFormControlTextarea1" rows="3"  style="width: 100%;"></textarea>
+    </div>
+
+    <div class="container my-4 d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-primary inc-btn mx-2 control-button">העתק</button>
+        <button type="button" class="btn btn-outline-primary inc-btn mx-2 control-button">ווצאפ דורין</button>
+        <button type="button" class="btn btn-outline-primary inc-btn mx-2 control-button">חזור</button>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="firebase.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
