@@ -33,3 +33,22 @@ p,label{
     font-family: "Varela Round", sans-serif;
     font-weight: 400;
 }
+
+.form-select,
+.counter-input{
+font-size: 12px;}
+
+#commander-name,
+#notesInput{
+    font-size: 12px;
+}
+
+.inc-btn,
+.dec-btn {
+    padding: 2px 2px; /* Adjusts padding to make it smaller */
+    width: 25px; /* Set a fixed width for smaller size */
+    height: 25px; /* Set a fixed height for smaller size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
