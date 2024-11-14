@@ -1,8 +1,4 @@
 
-function navigateTo(page) {
-    window.location.href = page;
-}
-
 const currentDate = displayCurrentDate();
 const dateWithDots = currentDate.replace(/\//g, ".");
 //display date and create an entry in the db for this day 
@@ -81,5 +77,35 @@ function decrement(counterNumber) {
 
 
 function getData(){
-    
+    for (let i = 1; i <= 5; i++) {
+        updateCounterFromInput(i);
+    }
+    title = `**${document.getElementById('title').innerText}**`;
+    date = `תאריך: ${currentDate}`;
+    commanderName = document.getElementById('commander-name').value || "לא צויין";
+    openHour = document.getElementById('open-gate').value;
+    closeHour = document.getElementById('close-gate').value;
+    notes = document.getElementById('notesInput').value || "אין הערות";
+    shiftData = `${title}\n${date}\nשם המפקד: ${commanderName}\nפתיחת שער: ${openHour}\nסגירת שער: ${closeHour}\nמספר נכנסים: ${counters[0]}\nמספר יוצאים: ${counters[1]}\nרכבים נכנסים: ${counters[2]}\nרכבים יוצאים: ${counters[3]}\nמסורבים: ${counters[4]}\nהערות: ${notes}`;
+}
+
+function copyData()
+{
+    getData();
+    navigator.clipboard.writeText(shiftData).then(() => {
+        alert("הועתק");
+    }).catch(err => {
+        alert("Failed to copy data: " + err);
+    });
+}
+
+function sendWhatsApp(){
+    getData();
+    const phoneNumber = "9725000000";
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, "_blank");
+}
+
+function goHome() {
+    window.location.href = 'index.html';
 }
