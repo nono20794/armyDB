@@ -17,6 +17,7 @@ h1,h2{
 p,label{
     font-family: "Fredoka", sans-serif;
     font-weight: 300;
+    font-size: 13px;
 }
 .main-btn {
       width: 200px; /* Set a fixed width to maintain the size of the buttons */
