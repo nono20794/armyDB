@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2 class="my-1" id="title">חסם באקה 427</h1>
+    <h5 class="my-1" id="title">חסם באקה 427</h1>
     <div class="py-0 text-end d-flex flex-column justify-content-center ">
         <p class="my-1" id="date"></p>
         <!-- <p class="my-2">:שם מפקד</p> -->
         <div class="commander-section my-1 d-flex align-items-center" dir="rtl">
             <label for="commander-name" class="form-label text-nowrap ms-4">שם מפקד:</label>
-            <input type="text" class="form-control form-control-sm text-sm" id="commander-name" placeholder="הכנס שם" >
+            <input type="text" class="form-control form-control-sm text-sm py-0" id="commander-name" placeholder="הכנס שם" >
         </div>
         <p class="my-1 d-flex align-items-center text-nowrap">
-            <select class="form-select form-select-sm me-4 flex-grow-1 form-control-sm" aria-label="open gate" id="open-gate">
+            <select class="form-select form-select-sm me-4 flex-grow-1 form-control-sm text-sm" aria-label="open gate" id="open-gate">
                 <option selected value="8:00">08:00</option>
                 <option value="12:00">12:00</option>
                 <option value="16:00">16:00</option>
@@ -29,7 +29,7 @@
             :פתיחת שער           
         </p>
         <p class="my-1 d-flex align-items-center text-nowrap">
-            <select class="form-select form-select-sm me-4 flex-grow-1 form-control-sm" aria-label="close gate" id="close-gate">
+            <select class="form-select form-select-sm me-4 flex-grow-1 form-control-sm text-sm" aria-label="close gate" id="close-gate">
                 <option selected value="8:30">08:30</option>
                 <option value="12:30">12:30</option>
                 <option value="16:30">16:30</option>
@@ -38,9 +38,9 @@
         </p>
     </div>
 
-    <div class="container">
+    <div class="container m-0 p-0">
         <div class="row mt-1 justify-content-evenly">
-            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-2" >
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-1" >
                 <p class="mb-1">מספר נכנסים</p>
                 <input type="number" id="counter1" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(1)" >
                 <div class="buttons-container d-flex flex-row">
@@ -48,7 +48,7 @@
                     <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(1)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-2" >
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-1" >
                 <p class="mb-1">מספר יוצאים</p>
                 <input type="number" id="counter2" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(2)">
                 <div class="buttons-container d-flex flex-row">
@@ -56,7 +56,7 @@
                     <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(2)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-2" >
+            <div class="col-md-3 border d-flex flex-column justify-content-center align-items-center py-1" >
                 <p class="mb-1">מספר מסורבים</p>
                 <input type="number" id="counter5" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(5)">
                 <div class="buttons-container d-flex flex-row">
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="row mb-1 justify-content-evenly">
-            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-2" >
+            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-1" >
                 <p class="mb-1">רכבים נכנסים</p>
                 <input type="number" id="counter3" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(3)">
                 <div class="buttons-container d-flex flex-row">
@@ -74,7 +74,7 @@
                     <button type="button" class="btn btn-outline-info btn-sm dec-btn mx-2" onclick="decrement(3)"><i class="bi bi-dash"></i></button>
                 </div>
             </div>
-            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-2" >
+            <div class="col-md-5 border d-flex flex-column justify-content-center align-items-center py-1" >
                 <p class="mb-1">רכבים יוצאים</p>
                 <input type="number" id="counter4" class="counter-input mb-1 text-center" value="0" min="0" onchange="updateCounterFromInput(4)">
                 <div class="buttons-container d-flex flex-row">
@@ -88,10 +88,10 @@
 
     <div class="notes  mx-auto my-1 d-flex align-items-center" dir="rtl">
         <label for="inputEmail4" class="form-label text-nowrap ms-4">הערות:</label>
-        <textarea class="form-control p-0 m-0 text-sm" id="notesInput" rows="2"  style="width: 100%;" placeholder="הכנס הערות"></textarea>
+        <input type="text" class="form-control py-0 m-0 text-sm" id="notesInput"   placeholder="הכנס הערות"></input>
     </div>
 
-    <div class="container my-1 d-flex justify-content-center p-3">
+    <div class="container my-1 d-flex justify-content-center">
         <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="copyData()">העתק</button>
         <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="sendWhatsApp()">ווצאפ דורין</button>
         <button type="button" class="btn btn-outline-primary btn-sm mx-2 control-button" onclick="goHome()">חזור</button>
